@@ -73,7 +73,6 @@ const form = useForm({
 
 - Example: `import { Mail, Send, Users } from 'lucide-react'`
 
-
 ### Animation & Motion
 
 **tw-animate-css** + **CSS Transitions**
@@ -84,7 +83,6 @@ const form = useForm({
 
 - Avoid heavy JS animation libraries like Framer Motion unless absolutely necessary for complex gestures
 
-
 ### Dark Mode
 
 **Tailwind Dark Mode** (`selector` strategy)
@@ -94,7 +92,6 @@ const form = useForm({
 - Toggle class `dark` on the `<html>` element
 
 - Use `dark:` prefix for dark mode styles (e.g., `bg-white dark:bg-slate-900`)
-
 
 ### State Management
 
@@ -168,15 +165,14 @@ const campaigns = await fetch('/api/v1/campaigns').then(r => r.json());
 
 **Pattern**: shadcn/ui + react-hook-form + zod
 
-**Requirements**
+#### Requirements
 
 - All forms must use Zod schemas for validation
 - Error messages must be user-friendly
 - Support for multi-step forms (campaign creation wizard)
-
 - Auto-save drafts for long forms
 
-**Example Structure**:
+#### Example Structure
 
 ```typescript
 
@@ -202,41 +198,32 @@ const form = useForm({ resolver: zodResolver(schema) });
 
 **Pattern**: shadcn/ui Dialog component
 
-**Requirements**
+#### Requirements
 
 - Accessible (ARIA, keyboard navigation)
-
 - Backdrop click to close (configurable)
-
 - Escape key to close
-
 - Focus trap within modal
-
 - Sizes: sm, md, lg, xl, full
 
-**Use Cases**
+#### Use Cases
 
 - Confirmation dialogs (delete campaign)
-
 - Multi-step wizards (campaign setup)
-
 - Detail views (recipient details)
 
 ### Notifications
 
 **Pattern**: shadcn/ui Toast (using sonner)
 
-**Requirements**
+#### Requirements
 
 - Position: top-right (default)
-
 - Auto-dismiss: 3s (success), 5s (error), manual (warning)
-
 - Action buttons for undo/retry
-
 - Stack multiple toasts
 
-**Example**:
+#### Example
 
 ```typescript
 
@@ -461,11 +448,9 @@ interface ButtonProps {
 
 ```
 
-
 ### Button Group Pattern
 
 ```typescript
-
 interface ButtonGroupProps {
   variant?: 'segmented' | 'attached';
   size?: ButtonSize;
@@ -474,15 +459,12 @@ interface ButtonGroupProps {
 }
 
 // Usage for mutually exclusive options
-
 <ButtonGroup variant="segmented">
   <Button>Daily</Button>
   <Button active>Weekly</Button>
   <Button>Monthly</Button>
 </ButtonGroup>
-
 ```
-
 
 ## Form Components
 
@@ -525,6 +507,7 @@ const [emailError, setEmailError] = useState('');
 ```
 
 ### Select Components
+
 ```typescript
 interface SelectOption {
   value: string | number;
@@ -559,6 +542,7 @@ interface SelectProps {
 ```
 
 ### Form Validation Patterns
+
 ```typescript
 interface ValidationRule {
   type: 'required' | 'email' | 'minLength' | 'maxLength' | 'pattern';
@@ -599,6 +583,7 @@ const FormField = ({ name, rules, children }: FormFieldProps) => {
 ## Data Display Components
 
 ### Table Component
+
 ```typescript
 interface TableColumn<T> {
   key: keyof T;
@@ -638,6 +623,7 @@ interface TableProps<T> {
 ```
 
 ### Card Component
+
 ```typescript
 interface CardProps {
   variant?: 'default' | 'elevated' | 'outlined' | 'filled';
@@ -672,6 +658,7 @@ interface CardProps {
 ## Feedback Components
 
 ### Alert Component
+
 ```jsx
 type AlertVariant = 'info' | 'success' | 'warning' | 'error';
 
@@ -775,6 +762,7 @@ interface ModalProps {
 ## Navigation Components
 
 ### Breadcrumb Component
+
 ```typescript
 interface BreadcrumbItem {
   label: string;
@@ -799,6 +787,7 @@ interface BreadcrumbProps {
 ```
 
 ### Tab Component
+
 ```typescript
 interface TabItem {
   id: string;
@@ -832,6 +821,7 @@ interface TabsProps {
 ## Utility Components
 
 ### Loading States
+
 ```typescript
 interface LoadingProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
@@ -848,6 +838,7 @@ interface LoadingProps {
 ```
 
 ### Empty States
+
 ```jsx
 interface EmptyStateProps {
   icon?: React.ComponentType;
@@ -873,6 +864,7 @@ interface EmptyStateProps {
 ```
 
 ### Badge Component
+
 ```typescript
 interface BadgeProps {
   variant?: 'default' | 'success' | 'warning' | 'error' | 'info';
@@ -891,6 +883,7 @@ interface BadgeProps {
 ## Component Development Guidelines
 
 ### Component Structure
+
 ```typescript
 // components/Button/Button.tsx
 import React from 'react';
@@ -1029,12 +1022,14 @@ export const Loading: Story = {
 
 ### Responsive Design Strategy
 
-**Mobile-First Approach**
+#### Mobile-First Approach
+
 - Base styles target mobile (< 640px)
 - Progressive enhancement for tablet (768px+) and desktop (1024px+)
 - Touch-friendly targets: minimum 44px × 44px
 
 **Breakpoints** (from design-tokens.md):
+
 ```typescript
 const breakpoints = {
   sm: '640px',   // Small devices
@@ -1047,14 +1042,14 @@ const breakpoints = {
 
 ### Theme Support
 
-### Light/Dark Mode
+#### Light/Dark Mode
 
 - Use Tailwind's `dark:` variant
 - Store preference in localStorage
 - Respect system preference (`prefers-color-scheme`)
 - Smooth transitions between themes
 
-**Implementation Pattern**:
+#### Implementation Pattern
 
 ```typescript
 // Use next-themes for theme management

@@ -97,6 +97,7 @@ Status: **Not Planned**
 - **Rationale:** SMTP credentials sufficient for MVP. OAuth email connections add convenience for Gmail/Outlook users.
 
 **Important Distinction:**
+
 - **User Authentication OAuth** (2027 consideration) - How users log into PenguinMails
 - **Email Account OAuth** (Q4 2026) - How users connect Gmail/Outlook accounts to send emails
 
@@ -110,10 +111,8 @@ Status: **Not Planned**
 
 Status: **Updated**
 
-**Old References**: Generic "queue dashboard" mentions
-
-**Actual Implementation**: Hybrid PostgreSQL + Redis queue system
-
+- Old References: Generic "queue dashboard" mentions
+- Actual Implementation: Hybrid PostgreSQL + Redis queue system
 - PostgreSQL for durable job state (`jobs`, `job_queues`, `job_logs` tables)
 - Redis for fast processing
 - Custom monitoring UI
